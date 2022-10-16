@@ -534,3 +534,7 @@ blockquote {
 #blog-list-title {
     padding: 20px;
 }
+
+.blog .blog-list {
+    max-width: 96%;
+}

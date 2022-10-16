@@ -1,4 +1,7 @@
-// postOut
+const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+const limit = urlParams.get('limit');
 
 const url = "https://cdn.contentful.com/spaces/4e6is2t85dqg/environments/master/entries?access_token=eFNXLEj8rIO2lfh134OUeaCIZtTRazZD3Jxro3YD1CQ";;
 
@@ -9,7 +12,12 @@ fetch(url)
         console.log(json);
         
         var list = ""
-        var maxLength = json.items.length > 3 ? 3 : json.items.length;
+        var maxLength;
+        if (limit == "none") {
+            maxLength = json.items.length;    
+        } else {
+            maxLength = json.items.length > 3 ? 3 : json.items.length;
+        }
 
         for (let i = 0; i < maxLength; i++) {
             list += `<li class="blog-card">`;
